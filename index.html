@@ -632,7 +632,7 @@
             }
 
                 .mobile-menu-btn {
-                  display: block !important; /* force it to override any hidden state */
+                  display: block !important; 
                   position: absolute;
                   top: 50%;
                   right: 1rem;
@@ -651,10 +651,11 @@
                 }
               
                 .nav-links {
-                  position: absolute;
-                  top: 100%;
+                  position: fixed;
+                  top: 70px;
                   right: 0;
                   width: 100%;
+                  z-index: 1000;
                   background-color: var(--card-bg);
                   flex-direction: column;
                   align-items: flex-start;
@@ -681,15 +682,16 @@
     <header class="navigation">
     <nav class="nav" id="mainNav">
         <a class="logo">THINUL BOPEARACHCHI</a>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
         <div class="nav-links" id="navLinks">
             <a href="#services">Services</a>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
             
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
 
             <div class="nav-buttons-container">
                 <div class="nav-buttons">
@@ -925,13 +927,31 @@
         });
        
         
-        // Mobile menu toggle
+            // Mobile menu toggle
         mobileMenuBtn.addEventListener('click', function () {
             navLinks.classList.toggle('active');
             
             const icon = mobileMenuBtn.querySelector('i');
             icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times'); // Ensure this class is defined in FontAwesome
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+            }
+        });
+
+        // Close menu when resizing to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+            }
         });
         
         
