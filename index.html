@@ -672,8 +672,25 @@
               
             .logo {
                 font-size: 1.8rem;
-            }
-        
+                            }
+                            .form-message {
+                    padding: 1rem;
+                    border-radius: 0.5rem;
+                    margin-top: 1rem;
+                }
+                
+                .form-message.success {
+                    background: rgba(76, 175, 80, 0.1);
+                    border: 1px solid #4CAF50;
+                    color: #4CAF50;
+                }
+                
+                .form-message.error {
+                    background: rgba(244, 67, 54, 0.1);
+                    border: 1px solid #f44336;
+                    color: #f44336;
+                }
+                        
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -861,19 +878,21 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form action="mailto:thinulchathsidubop@gmail.com" method="post" enctype="text/plain">
+                    <div id="formMessage" class="form-message" style="display: none;"></div>
+                    <form action="https://formspree.io/f/xrbqpgrk" method="POST" id="contactForm">
                         <div class="form-group">
                             <label class="form-label">Name</label>
                             <input type="text" name="name" class="form-input" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-input" placeholder="Your Email" required>
+                            <input type="email" name="_replyto" class="form-input" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Message</label>
                             <textarea name="message" class="form-input" rows="5" placeholder="Your Message" required></textarea>
                         </div>
+                        <input type="hidden" name="_subject" value="New Portfolio Inquiry">
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
@@ -986,14 +1005,45 @@
         darkModeBtn.addEventListener('click', () => {
             document.body.classList.remove('light-mode');
         });
+            if (!validateEmail(formData.get('_replyto'))) {
+    alert('Please enter a valid email');
+    return;
+}
 
 
-        // Form submission (just for show, no actual submission)
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Message sent! (This is a demo alert)');
-            this.reset();
-        });
+                  // Replace the form submission handler with:
+            document.getElementById('contactForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const submitBtn = this.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Sending...';
+            
+                try {
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+            
+                   const formMessage = document.getElementById('formMessage');
+                    
+                    if (response.ok) {
+                        formMessage.textContent = 'Message sent successfully!';
+                        formMessage.classList.add('success');
+                        formMessage.style.display = 'block';
+                    } else {
+                        formMessage.textContent = 'Error sending message. Please try again.';
+                        formMessage.classList.add('error');
+                        formMessage.style.display = 'block';
+                    }
+                function validateEmail(email) {
+                    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return regex.test(email);
+                }
 
         // Create some animated background effects
         document.addEventListener('DOMContentLoaded', function() {
