@@ -22,6 +22,20 @@
             font-family: 'Inter', sans-serif;
         }
 
+        body {
+            background-color: var(--main-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overscroll-behavior: none;
+            position: relative;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
         :root {
             --main-bg: #1a1a2e;
             --card-bg: rgba(30, 30, 46, 0.966);
@@ -42,21 +56,12 @@
             --text-secondary: #4b5563;
         }
 
-        body {
-            background-color: var(--main-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overscroll-behavior: none;
-            position: relative;
-            overflow-x: hidden;
-        }
-
         /* Falling Shapes Effect */
         .falling-shapes {
             position: absolute;
             left: 0;
             width: 100%;
-            height: calc(100% - 70px); /* Cover from services to bottom */
+            height: calc(100vh - 70px); /* Limit to viewport height minus nav */
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
@@ -80,7 +85,7 @@
                 opacity: 0.3;
             }
             100% {
-                transform: translateY(calc(100vh + 100px)) rotate(360deg);
+                transform: translateY(calc(100vh)) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -97,7 +102,8 @@
             padding: 2rem 0;
             position: relative;
             overflow: hidden;
-            z-index: 2; /* Above falling shapes */
+            z-index: 2;
+            flex: 1 0 auto;
         }
 
         .header-content {
@@ -105,7 +111,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: calc(100vh - 60px);
+            min-height: calc(100vh - 65px);
             position: relative;
             z-index: 2;
             text-align: center;
@@ -254,7 +260,7 @@
             display: flex;
             align-items: center;
             background: var(--glass-effect);
-            border-radius: 8px;
+            border-radius: 20px;
             padding: 0.3rem 0.5rem;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
@@ -277,6 +283,11 @@
             justify-content: center;
             cursor: pointer;
             transition: transform 0.3s, background 0.3s;
+            color: var(--text-primary);
+        }
+
+        body:not(.light-mode) .btn-icon {
+            color: #ffffff;
         }
 
         .btn-icon:hover,
@@ -361,7 +372,8 @@
             padding: 4rem 0;
             scroll-margin-top: 80px;
             position: relative;
-            z-index: 1; /* Above falling shapes */
+            z-index: 1;
+            flex: 1 0 auto;
         }
 
         .section-title {
@@ -626,9 +638,10 @@
             padding: 2rem 0;
             text-align: center;
             border-top: 1px solid var(--glass-border);
-            margin-top: 4rem;
+            margin-top: 0;
             position: relative;
             z-index: 1;
+            flex-shrink: 0;
         }
 
         .footer-text {
@@ -718,7 +731,7 @@
             }
 
             .falling-shapes {
-                height: calc(100% - 70px); /* Maintain full height on mobile */
+                height: calc(100vh - 70px);
             }
         }
 
@@ -742,7 +755,7 @@
 
             .nav-buttons-container {
                 padding: 0.4rem 0.4rem;
-                border-radius: 30px;
+                border-radius: 20px;
             }
 
             .btn-icon {
@@ -913,7 +926,7 @@
                         </div>
                         <div class="contact-text">
                             <p>Email</p>
-                            <a href="mailto:contact@thinul.com" aria-label="Email Thinul">contact@thinul.com</a>
+                            <a href="/cdn-cgi/l/email-protection#d4f7fbfae0f5f7e0d4e0fcfdfae1f8baf7fbf9" aria-label="Email Thinul"><span class="__cf_email__" data-cfemail="a9cac6c7ddc8cadde9ddc1c0c7dcc587cac6c4">[email&#160;protected]</span></a>
                         </div>
                     </div>
                 </div>
@@ -960,6 +973,7 @@
         </div>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // Theme Management
         const lightModeBtn = document.getElementById('lightModeBtn');
@@ -1107,7 +1121,7 @@
             const fallingShapes = document.getElementById('fallingShapes');
             const servicesSection = document.getElementById('services');
             const colors = ['#ff6b6b', '#a855f7', '#ff9e7d', '#fb5607'];
-            const maxShapes = 6; // Reduced number of shapes
+            const maxShapes = 6;
 
             // Dynamically set the top position of falling-shapes to the services section
             const servicesRect = servicesSection.getBoundingClientRect();
@@ -1121,7 +1135,7 @@
                 if (Math.random() > 0.5) {
                     shape.classList.add('circle');
                 }
-                const size = Math.random() * 25 + 15; // Increased size range (15-40px)
+                const size = Math.random() * 25 + 15;
                 shape.style.width = `${size}px`;
                 shape.style.height = `${size}px`;
                 shape.style.background = colors[Math.floor(Math.random() * colors.length)];
@@ -1138,11 +1152,11 @@
 
             // Create initial shapes
             for (let i = 0; i < maxShapes; i++) {
-                setTimeout(createShape, i * 600); // Increased delay for fewer shapes
+                setTimeout(createShape, i * 600);
             }
 
             // Continuously create new shapes
-            setInterval(createShape, 1500); // Increased interval for fewer shapes
+            setInterval(createShape, 1500);
         });
 
         // Performance optimization
@@ -1150,5 +1164,6 @@
             document.body.classList.add('loaded');
         });
     </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'939ac992499c44de',t:'MTc0NjIyMzE4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
