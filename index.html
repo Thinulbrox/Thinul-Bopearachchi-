@@ -13,7 +13,7 @@
     <link rel="manifest" href="/favicon.io/site.webmanifest">
     <title>Thinul Bopearachchi - Official Website</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&family=Comic+Sans+MS&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&family=Comic+Sans+MS&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -61,7 +61,7 @@
             position: absolute;
             left: 0;
             width: 100%;
-            height: calc(100vh - 70px); /* Limit to viewport height minus nav */
+            height: calc(100vh - 70px);
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
@@ -534,7 +534,7 @@
 
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
@@ -542,37 +542,44 @@
         .contact-form {
             background: var(--card-bg);
             border-radius: 1rem;
-            padding: 1.5rem;
+            padding: 2rem;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
+        .contact-details {
+            width: 100%;
+            max-width: none;
+        }
+
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem;
         }
 
         .contact-icon {
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             background: var(--primary-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 1rem;
+            margin-right: 1.5rem;
             flex-shrink: 0;
         }
 
         .contact-icon i {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
         }
 
         .contact-text {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 1.1rem;
+            flex-grow: 1;
         }
 
         .contact-text a {
@@ -733,6 +740,25 @@
             .falling-shapes {
                 height: calc(100vh - 70px);
             }
+
+            .contact-details,
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .contact-icon {
+                width: 40px;
+                height: 40px;
+                margin-right: 1rem;
+            }
+
+            .contact-icon i {
+                font-size: 1.2rem;
+            }
+
+            .contact-text {
+                font-size: 0.95rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -852,7 +878,7 @@
                 <p class="testimonial-content">With over 4 years of professional experience, I specialize in UI/UX design, web development, and educational content creation. My passion lies in delivering digital solutions that are both aesthetically pleasing and highly functional. I stay updated with industry trends to provide top-quality results for my clients.</p>
                 <p class="testimonial-content">Notable projects include:</p>
                 <ul>
-                    <li><a href="https://rosarians.neocities.org" target="_blank" style="color: var(--accent); text-decoration: none;"><i class="fas fa-star" style="margin-right: 5px;"></i> rosarians.neocities.org</a></li>
+                    <li><a href="https://rosarians.netlify.app" target="_blank" style="color: var(--accent); text-decoration: none;"><i class="fas fa-star" style="margin-right: 5px;"></i> rosarians.netlify.app</a></li>
                     <li><a href="https://thinulbrox.github.io" target="_blank" style="color: var(--accent); text-decoration: none;"><i class="fas fa-star" style="margin-right: 5px;"></i> thinulbrox.github.io</a></li>
                 </ul>
                 <p class="testimonial-author">– Thinul</p>
@@ -926,7 +952,7 @@
                         </div>
                         <div class="contact-text">
                             <p>Email</p>
-                            <a href="/cdn-cgi/l/email-protection#d4f7fbfae0f5f7e0d4e0fcfdfae1f8baf7fbf9" aria-label="Email Thinul"><span class="__cf_email__" data-cfemail="a9cac6c7ddc8cadde9ddc1c0c7dcc587cac6c4">[email&#160;protected]</span></a>
+                            <a href="mailto:thinulchathsidubop@gmail.com" aria-label="Email Thinul">thinulchathsidubop@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -973,7 +999,6 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // Theme Management
         const lightModeBtn = document.getElementById('lightModeBtn');
@@ -1164,6 +1189,5 @@
             document.body.classList.add('loaded');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'939ac992499c44de',t:'MTc0NjIyMzE4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
