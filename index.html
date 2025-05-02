@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/favicon.io/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.io/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.io/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.io/apple-touch-icon.png" />
-    <link rel="manifest" href="/favicon.io/web-app-manifest-512x512.png"/>
-    <title>Thinul Bopearachchi - Offcial Website</title>
+    <meta name="description" content="Thinul Bopearachchi's official portfolio showcasing UI/UX design, web development, and ICT tutoring services.">
+    <meta name="author" content="Thinul Bopearachchi">
+    <meta name="keywords" content="UI/UX design, web development, ICT tutoring, educational posters">
+    <link rel="icon" type="image/png" href="/favicon.io/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.io/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.io/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.io/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon.io/site.webmanifest">
+    <title>Thinul Bopearachchi - Official Website</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&family=Comic+Sans+MS&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -29,34 +34,70 @@
             --glass-effect: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
+
         .light-mode {
-            --main-bg: #ffffff; 
-            --text-primary: #1a1a2e; 
-            --card-bg: rgba(255, 255, 255, 0.9); 
-            
+            --main-bg: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-primary: #1a1a2e;
+            --text-secondary: #4b5563;
         }
 
         body {
             background-color: var(--main-bg);
             color: var(--text-primary);
             line-height: 1.6;
+            overscroll-behavior: none;
+            position: relative;
+            overflow-x: hidden;
         }
-        body {
-            background-color: var(--main-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
+
+        /* Falling Shapes Effect */
+        .falling-shapes {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 70px); /* Cover from services to bottom */
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.3;
+            animation: fall linear infinite;
+            border-radius: 20%;
+            transform: rotate(45deg);
+        }
+
+        .shape.circle {
+            border-radius: 50%;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
+            position: relative;
+            z-index: 1;
         }
 
-        header {
+        header.hero {
             padding: 2rem 0;
             position: relative;
             overflow: hidden;
+            z-index: 2; /* Above falling shapes */
         }
 
         .header-content {
@@ -64,26 +105,33 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 90vh;
+            min-height: calc(100vh - 60px);
             position: relative;
             z-index: 2;
             text-align: center;
         }
+
         .header-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, 
-                #ff6b6b, #a855f7, #ff9e7d, #fb5607, 
-                #4facfe, #00f2fe, #43e97b, #38f9d7, 
-                #fa709a, #fee140, #fbc2eb, #a6c1ee, 
-                #fddb92, #d4fc79, #96e6a1, #fbc7d4, 
-                #cfd9df, #e2ebf0, #f6d365, #fda085, 
-                #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, 
-                #c2e9fb, #d4fc79, #96e6a1, #84fab0, 
-                #8fd3f4, #a6c1ee);
+            background: linear-gradient(
+                135deg,
+                #ff6b6b, #a855f7, #ff9e7d, #fb5607,
+                #4facfe, #00f2fe, #43e97b, #38f9d7,
+                #fa709a, #fee140, #fbc2eb, #a6c1ee,
+                #fddb92, #d4fc79, #96e6a1, #fbc7d4,
+                #cfd9df, #e2ebf0, #f6d365, #fda085,
+                #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb,
+                #84fab0, #8fd3f4, #ff5858, #ff9966,
+                #ccff99, #99ccff, #ff99cc, #66cccc,
+                #ffcc99, #9999ff, #cc99ff, #ff6666,
+                #66ffcc, #ffcc66, #9966ff, #ff6699,
+                #66ff99, #cc66ff, #ff9966, #6699ff,
+                #ff66cc, #99ff66
+            );
             background-size: 800% 800%;
             opacity: 0.1;
             z-index: 1;
@@ -91,21 +139,9 @@
         }
 
         @keyframes gradient-shift {
-            0% {
-            background-position: 0% 50%;
-            }
-            25% {
-            background-position: 50% 50%;
-            }
-            50% {
-            background-position: 100% 50%;
-            }
-            75% {
-            background-position: 50% 50%;
-            }
-            100% {
-            background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .blob {
@@ -114,97 +150,85 @@
             filter: blur(80px);
             z-index: 0;
             opacity: 0.3;
-            animation: blob-move 40s ease infinite;
+            animation: blob-move 20s ease infinite;
         }
 
         .blob-1 {
-            width: 400px;
-            height: 400px;
+            width: 300px;
+            height: 300px;
             background: #ff6b6b;
-            top: -100px;
-            right: -100px;
+            top: -50px;
+            right: -50px;
         }
 
         .blob-2 {
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
             background: #ff9e7d;
             bottom: -50px;
             left: -50px;
         }
 
         @keyframes blob-move {
-            0%, 100% {
-            transform: translate(0, 0);
-            }
-            25% {
-            transform: translate(50px, -50px);
-            }
-            50% {
-            transform: translate(-50px, 50px);
-            }
-            75% {
-            transform: translate(50px, 50px);
-            }
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -30px); }
+            50% { transform: translate(-30px, 30px); }
+            75% { transform: translate(30px, 30px); }
         }
 
-        /* Navigation Bar - Enhanced */
         .navigation {
             background: var(--card-bg);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: all 0.3s ease;
-          }
+            transition: background-color 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
         .navigation.transparent {
-            background-color: transparent;
-            box-shadow: none;
-          }
+            background: transparent;
+            backdrop-filter: none;
+        }
+
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-            height: 30px;
-          }
-
-        .nav.scrolled {
-            padding: 0.5rem 2rem;
-            background-color: rgba(26, 26, 46, 0.95);
+            padding: 1rem 2rem;
+            height: 70px;
         }
 
         .logo {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 600;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-family: 'Dancing Script', ;
+            font-family: 'Comic Sans MS', cursive;
             text-decoration: none;
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
             align-items: center;
             gap: 2rem;
         }
-            
+
         .nav-links a {
             color: var(--text-primary);
             text-decoration: none;
-            transition: all 0.3s;
             font-weight: 500;
-            font-size: 17px;
+            font-size: 1rem;
             position: relative;
             padding: 0.5rem 0;
+            transition: color 0.3s ease;
         }
-            
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -212,55 +236,55 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: var(--accent);
+            background: var(--accent);
             transition: width 0.3s ease;
         }
-            
-        .nav-links a:hover::after {
+
+        .nav-links a:hover::after,
+        .nav-links a:focus::after {
             width: 100%;
         }
-            
-        .nav-links a:hover {
+
+        .nav-links a:hover,
+        .nav-links a:focus {
             color: var(--accent);
         }
-        
+
         .nav-buttons-container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            background-color: rgba(255, 255, 255, 0.2); 
-            border-radius: 50px; 
-            padding: 0.45rem; 
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            margin-top: 0.2rem; 
+            background: var(--glass-effect);
+            border-radius: 8px;
+            padding: 0.3rem 0.5rem;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
         }
 
         .nav-buttons {
             display: flex;
-            align-items: center;
-            gap: 0.2rem; 
+            gap: 0.5rem;
         }
 
-
-        
         .btn-icon {
             border: none;
             background: transparent;
-            border-radius: 70%; 
-            font-size: 1.2rem; 
-            width: 40px; 
-            height: 40px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
             transition: transform 0.3s, background 0.3s;
         }
-        
-        .btn-icon:hover {
-            transform: scale(1.1);
-            background: transparent;
 
+        .btn-icon:hover,
+        .btn-icon:focus {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.1);
         }
+
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -268,10 +292,11 @@
             color: var(--text-primary);
             font-size: 1.5rem;
             cursor: pointer;
+            z-index: 1001;
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             margin-bottom: 1rem;
             background: var(--primary-gradient);
@@ -280,12 +305,11 @@
             color: transparent;
             font-family: 'Playfair Display', serif;
             letter-spacing: -0.5px;
-            margin-top: 4rem;
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
-            max-width: 700px;
+            font-size: 1.2rem;
+            max-width: 600px;
             margin-bottom: 2rem;
             color: var(--text-secondary);
         }
@@ -293,7 +317,8 @@
         .cta-buttons {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn {
@@ -303,6 +328,9 @@
             transition: all 0.3s ease;
             cursor: pointer;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -311,7 +339,8 @@
             border: none;
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover,
+        .btn-primary:focus {
             opacity: 0.9;
             transform: translateY(-2px);
         }
@@ -322,20 +351,23 @@
             color: #6366f1;
         }
 
-        .btn-secondary:hover {
+        .btn-secondary:hover,
+        .btn-secondary:focus {
             background: rgba(99, 102, 241, 0.1);
             transform: translateY(-2px);
         }
 
         section {
-            padding: 5rem 0;
-            scroll-margin-top: 5rem;
+            padding: 4rem 0;
+            scroll-margin-top: 80px;
+            position: relative;
+            z-index: 1; /* Above falling shapes */
         }
 
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             text-align: center;
             background: var(--secondary-gradient);
             -webkit-background-clip: text;
@@ -343,191 +375,171 @@
             color: transparent;
             font-family: 'Dancing Script', cursive;
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 25%;
-            width: 50%;
+            bottom: -8px;
+            left: 50%;
+            width: 60px;
             height: 3px;
             background: var(--secondary-gradient);
-            border-radius: 5px;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
             border-radius: 1rem;
-            padding: 2rem;
+            padding: 1.5rem;
             transition: all 0.3s ease;
             border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            height: 100%;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
         }
 
-        .card:hover {
+        .card:hover,
+        .card:focus-within {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
             border-color: rgba(99, 102, 241, 0.3);
         }
 
         .card-icon {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             background: var(--primary-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .card-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
+        .card-icon i {
+            font-size: 1.5rem;
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             font-family: 'Playfair Display', serif;
             color: var(--accent-color);
         }
 
         .card-desc {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .card-price {
-            margin-top: auto;
-            font-weight: 700;
-            color: var(--accent-color);
+            font-size: 0.95rem;
+            flex-grow: 1;
         }
 
         .testimonial {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
             border-radius: 1rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1.5rem;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
         .testimonial-content {
             font-style: italic;
             margin-bottom: 1rem;
-            line-height: 1.8;
+            line-height: 1.6;
+            font-size: 1rem;
         }
 
         .testimonial-author {
             font-weight: 600;
             color: var(--accent-color);
             font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            text-align: right;
         }
+
         .pricing {
-            backdrop-filter: blur(10px);
-            max-width: fit-content;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
             margin: 0 auto;
-            padding: 0 1rem;
-            -webkit-backdrop-filter: blur(10px);
-            background-color: rgba(65, 90, 119, 0.3);
-            text-align: center;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            margin-top: 2cap;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 600px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
-        
+
         .pricing::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
-            width: 150%;
-            height: 150%;
+            width: 200%;
+            height: 200%;
             background: radial-gradient(circle, rgba(230, 57, 70, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+            animation: rotate 15s linear infinite;
         }
-        
+
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        
+
         .pricing h3 {
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
             font-family: 'Dancing Script', cursive;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
-        
+
         .pricing-highlight {
             color: var(--accent);
             font-weight: bold;
             font-size: 1.5rem;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
-        
+
         .pricing p {
             position: relative;
-            z-index: 2;
-            margin-bottom: 10px;
-           
-        }.title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            text-align: center;
-            background: var(--secondary-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-family: 'Dancing Script', cursive;
-            position: relative;
+            z-index: 1;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
         }
 
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
-        .contact-details {
-            background-color: var(--card-bg);
+        .contact-details,
+        .contact-form {
+            background: var(--card-bg);
             border-radius: 1rem;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .contact-icon {
@@ -539,44 +551,49 @@
             align-items: center;
             justify-content: center;
             margin-right: 1rem;
+            flex-shrink: 0;
         }
 
-        .contact-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
+        .contact-icon i {
+            font-size: 1.2rem;
         }
 
         .contact-text {
             color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
-        .contact-form {
-            background-color: var(--card-bg);
-            border-radius: 1rem;
-            padding: 2rem;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+        .contact-text a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-text a:hover,
+        .contact-text a:focus {
+            color: var(--accent);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
         .form-input {
             width: 100%;
             padding: 0.75rem;
             border-radius: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            background: var(--glass-effect);
             color: var(--text-primary);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
         }
 
         .form-input:focus {
@@ -584,23 +601,46 @@
             border-color: #6366f1;
         }
 
+        .form-message {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .form-message.success {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+        }
+
+        .form-message.error {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid #f44336;
+            color: #f44336;
+        }
+
         footer {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
             padding: 2rem 0;
             text-align: center;
-            margin-top: 5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-text {
             color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .social-link {
@@ -616,122 +656,138 @@
             transition: all 0.3s ease;
         }
 
-        .social-link:hover {
+        .social-link:hover,
+        .social-link:focus {
             transform: translateY(-3px);
             opacity: 0.9;
         }
 
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.25rem;
+                font-size: 2rem;
                 margin-top: 5rem;
             }
-            
-            .cta-buttons {
-                flex-direction: column;
+
+            .hero-subtitle {
+                font-size: 1rem;
             }
 
-                .mobile-menu-btn {
-                  display: block !important; 
-                  position: absolute;
-                  top: 50%;
-                  right: 1rem;
-                  transform: translateY(-50%);
-                  background: none;
-                  border: none;
-                  font-size: 1.8rem;
-                  color: var(--text-primary);
-                  cursor: pointer;
-                  z-index: 1001;
-                }
-              
-                .nav {
-                  padding: 1rem;
-                  position: relative;
-                }
-              
-                .nav-links {
-                  position: fixed;
-                  top: 70px;
-                  right: 0;
-                  width: 100%;
-                  z-index: 1000;
-                  background-color: var(--card-bg);
-                  flex-direction: column;
-                  align-items: flex-start;
-                  gap: 1rem;
-                  padding: 1rem 2rem;
-                  transform: translateX(100%);
-                  transition: transform 0.4s ease;
-                }
-              
-                .nav-links.active {
-                  transform: translateX(0%);
-                }
-              }
-              
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav {
+                padding: 1rem;
+                position: relative;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: 0;
+                width: 100%;
+                background: var(--card-bg);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1rem;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
             .logo {
                 font-size: 1.8rem;
-                            }
-                font-type
-            .form-message {
-                    padding: 1rem;
-                    border-radius: 0.5rem;
-                    margin-top: 1rem;
-                }
-                
-            .form-message.success {
-                    background: rgba(76, 175, 80, 0.1);
-                    border: 1px solid #4CAF50;
-                    color: #4CAF50;
-                }
-                
-            .form-message.error {
-                    background: rgba(244, 67, 54, 0.1);
-                    border: 1px solid #f44336;
-                    color: #f44336;
-                }
-                        
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .pricing {
+                padding: 1.5rem;
+            }
+
+            .falling-shapes {
+                height: calc(100% - 70px); /* Maintain full height on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .nav-buttons-container {
+                padding: 0.4rem 0.4rem;
+                border-radius: 30px;
+            }
+
+            .btn-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 1rem;
+            }
+        }
     </style>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="navigation">
-    <nav class="nav" id="mainNav">
-        <a class="logo">THINUL BOPEARACHCHI</a>
-
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            
-
-            <div class="nav-buttons-container">
-                <div class="nav-buttons">
-                    <button id="lightModeBtn" class="btn btn-icon">
-                        <i class="fas fa-sun"></i>
-                    </button>
-                    <button id="darkModeBtn" class="btn btn-icon">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
-            </div>
-    </nav>
+    <div class="falling-shapes" id="fallingShapes"></div>
+    <header class="navigation transparent">
+        <nav class="nav" id="mainNav">
+            <a href="/" class="logo" aria-label="Thinul Bopearachchi Home">THINUL BOPEARACHCHI</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks" role="navigation">
+                <li><a href="#services" aria-label="Services section">Services</a></li>
+                <li><a href="#about" aria-label="About section">About</a></li>
+                <li><a href="#projects" aria-label="Projects section">Projects</a></li>
+                <li><a href="#contact" aria-label="Contact section">Contact</a></li>
+                <li class="nav-buttons-container">
+                    <div class="nav-buttons">
+                        <button id="lightModeBtn" class="btn-icon" aria-label="Switch to light mode">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button id="darkModeBtn" class="btn-icon" aria-label="Switch to dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
     </header>
 
-    <header>
+    <header class="hero" id="home">
         <div class="container">
             <div class="header-content">
                 <h1 class="hero-title">Digital Design & Development</h1>
-                <p class="hero-subtitle">UI/UX Designer and Developer with over 4 years of industrial experience, specializing in creating beautiful digital experiences, educational posters, and providing ICT tutoring.</p>
+                <p class="hero-subtitle">UI/UX Designer and Developer with over 4 years of experience, specializing in creating engaging digital experiences, educational content, and providing ICT tutoring.</p>
                 <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                    <a href="#services" class="btn btn-secondary">Explore Services</a>
+                    <a href="#contact" class="btn btn-primary" aria-label="Contact me">Get in Touch</a>
+                    <a href="#services" class="btn btn-secondary" aria-label="View services">Explore Services</a>
                 </div>
             </div>
         </div>
@@ -740,181 +796,164 @@
         <div class="blob blob-2"></div>
     </header>
 
-    <section id="services">
+    <section id="services" aria-labelledby="services-title">
         <div class="container">
-            <h2 class="section-title">My Services</h2>
+            <h2 class="section-title" id="services-title">My Services</h2>
             <div class="cards-container">
-                <div class="card">
+                <article class="card">
                     <div class="card-icon">
-                        <i class="fas fa-paint-brush" style="color: white;"></i>
+                        <i class="fas fa-paint-brush"></i>
                     </div>
                     <h3 class="card-title">UI/UX Design</h3>
-                    <p class="card-desc">Creating intuitive and beautiful user interfaces and experiences that engage users and meet business goals.</p>
-                  
-                </div>
-                <div class="card">
+                    <p class="card-desc">Crafting intuitive and visually stunning user interfaces that enhance user engagement and meet business objectives.</p>
+                </article>
+                <article class="card">
                     <div class="card-icon">
-                        <i class="fas fa-laptop-code" style="color: white;"></i>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3 class="card-title">Web Development</h3>
-                    <p class="card-desc">Building responsive and modern websites with the latest technologies and best practices.</p>
-                    
-                </div>
-                <div class="card">
+                    <p class="card-desc">Developing responsive, high-performance websites using modern technologies and best practices.</p>
+                </article>
+                <article class="card">
                     <div class="card-icon">
-                        <i class="fas fa-chalkboard-teacher" style="color: white;"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
                     </div>
                     <h3 class="card-title">ICT Tutoring</h3>
-                    <p class="card-desc">Providing online or physical ICT lessons for students from grade 6 onwards with personalized learning plans.</p>
-                    
-                </div>
-                <div class="card">
+                    <p class="card-desc">Offering personalized ICT lessons for students from grade 6 onwards, both online and in-person.</p>
+                </article>
+                <article class="card">
                     <div class="card-icon">
-                        <i class="fas fa-book" style="color: white;"></i>
+                        <i class="fas fa-book"></i>
                     </div>
                     <h3 class="card-title">Educational Poster Design</h3>
-                    <p class="card-desc">Creating visually appealing and informative educational posters for schools, colleges, and educational institutions.</p>
-                </div>
+                    <p class="card-desc">Designing engaging and informative educational posters for schools and institutions.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <section id="about">
+    <section id="about" aria-labelledby="about-title">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="testimonial">
-                <p class="testimonial-content">With over 4 years of industrial experience, I specialize in UI/UX design, web development, and educational content creation. My passion is creating digital solutions that are not only visually appealing but also functional and user-friendly. I believe in continuous learning and staying updated with the latest industry trends to deliver the best results for my clients.</p>
-                <p class="testimonial-content">Here are some of my finished projects:</p>
+            <h2 class="section-title" id="about-title">About Me</h2>
+            <article class="testimonial">
+                <p class="testimonial-content">With over 4 years of professional experience, I specialize in UI/UX design, web development, and educational content creation. My passion lies in delivering digital solutions that are both aesthetically pleasing and highly functional. I stay updated with industry trends to provide top-quality results for my clients.</p>
+                <p class="testimonial-content">Notable projects include:</p>
                 <ul>
-                    <li>
-                        <a href="https://rosarians.neocities.org" target="_blank" style="color: var(--accent); text-decoration: none;">
-                            <i class="fas fa-star" style="color: var(--accent); margin-right: 5px;"></i> rosarians.neocities.org
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://thinulbrox.github.io" target="_blank" style="color: var(--accent); text-decoration: none;">
-                            <i class="fas fa-star" style="color: var(--accent); margin-right: 5px;"></i> thinulbrox.github.io
-                        </a>
-                    </li>
+                    <li><a href="https://rosarians.neocities.org" target="_blank" style="color: var(--accent); text-decoration: none;"><i class="fas fa-star" style="margin-right: 5px;"></i> rosarians.neocities.org</a></li>
+                    <li><a href="https://thinulbrox.github.io" target="_blank" style="color: var(--accent); text-decoration: none;"><i class="fas fa-star" style="margin-right: 5px;"></i> thinulbrox.github.io</a></li>
                 </ul>
-                <p class="testimonial-author">- Thinul</p>
-            </div>
+                <p class="testimonial-author">– Thinul</p>
+            </article>
         </div>
     </section>
 
-    <section>
+    <section id="pricing" aria-labelledby="pricing-title">
         <div class="pricing">
-            <h3 class="title">Affordable Pricing</h3>
-            <p>All services start from just <span class="pricing-highlight">Rs. 500 / $2.5</span></p>
+            <h3 class="section-title" id="pricing-title">Affordable Pricing</h3>
+            <p>All services start at <span class="pricing-highlight">Rs. 500 / $2.5</span></p>
             <p>Custom packages available for long-term projects and regular tutoring sessions.</p>
         </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" aria-labelledby="projects-title">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title" id="projects-title">Featured Projects</h2>
             <div class="cards-container">
-                <div class="card">
+                <article class="card">
                     <div class="card-icon">
-                        <i class="fas fa-globe" style="color: white;"></i>
+                        <i class="fas fa-globe"></i>
                     </div>
                     <h3 class="card-title">E-commerce Website</h3>
-                    <p class="card-desc">A fully responsive e-commerce website with modern UI and seamless user experience, built with the latest web technologies.</p>
-                </div>
-                <div class="card">
+                    <p class="card-desc">A fully responsive e-commerce platform with modern UI and seamless user experience, built with cutting-edge web technologies.</p>
+                </article>
+                <article class="card">
                     <div class="card-icon">
-                        <i class="fas fa-mobile-alt" style="color: white;"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h3 class="card-title">Mobile App UI Design</h3>
-                    <p class="card-desc">Complete UI/UX design for a fitness tracking mobile application with intuitive navigation and engaging visual elements.</p>
-                </div>
-                <div class="card">
+                    <p class="card-desc">Complete UI/UX design for a fitness tracking app, featuring intuitive navigation and engaging visuals.</p>
+                </article>
+                <article class="card">
                     <div class="card-icon">
-                        <i class="fas fa-graduation-cap" style="color: white;"></i>
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
                     <h3 class="card-title">Educational Poster Series</h3>
-                    <p class="card-desc">A series of educational posters for science subjects, designed to make complex concepts accessible to students.</p>
-                </div>
+                    <p class="card-desc">A series of educational posters for science subjects, designed to simplify complex concepts for students.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" aria-labelledby="contact-title">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title" id="contact-title">Get In Touch</h2>
             <div class="contact-container">
                 <div class="contact-details">
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <a href="tel:0720417269" style="color: white; text-decoration: none;">
-                                <i class="fas fa-phone"></i>
-                            </a>
+                            <i class="fas fa-phone"></i>
                         </div>
                         <div class="contact-text">
                             <p>Phone</p>
-                            <a href="tel:0720417269" style="color: var(--text-secondary); text-decoration: none;">0720417269</a>
+                            <a href="tel:+94720417269" aria-label="Call Thinul">+94 72 041 7269</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <a href="https://wa.me/94720417269" target="_blank" style="color: white; text-decoration: none;">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
+                            <i class="fab fa-whatsapp"></i>
                         </div>
                         <div class="contact-text">
                             <p>WhatsApp</p>
-                            <a href="https://wa.me/94720417269" target="_blank" style="color: var(--text-secondary); text-decoration: none;">0720417269</a>
+                            <a href="https://wa.me/94720417269" target="_blank" aria-label="Message on WhatsApp">+94 72 041 7269</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <a href="mailto:thinulchathsidubop@gmail.com" style="color: white; text-decoration: none;">
-                                <i class="fas fa-envelope"></i>
-                            </a>
+                            <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-text">
                             <p>Email</p>
-                            <a href="mailto:thinulchathsidubop@gmail.com" style="color: var(--text-secondary); text-decoration: none;">thinulchathsidubop@gmail.com</a>
+                            <a href="mailto:contact@thinul.com" aria-label="Email Thinul">contact@thinul.com</a>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <div id="formMessage" class="form-message" style="display: none;"></div>
-                    <form action="https://formspree.io/f/xrbqpgrk" method="POST" id="contactForm">
+                    <div id="formMessage" class="form-message" role="alert" style="display: none;"></div>
+                    <form id="contactForm" action="https://formspree.io/f/xrbqpgrk" method="POST" aria-labelledby="contact-title">
                         <div class="form-group">
-                            <label class="form-label">Name</label>
-                            <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required aria-required="true">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="_replyto" class="form-input" placeholder="Your Email" required>
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="_replyto" class="form-input" placeholder="Your Email" required aria-required="true">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Message</label>
-                            <textarea name="message" class="form-input" rows="5" placeholder="Your Message" required></textarea>
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-input" rows="5" placeholder="Your Message" required aria-required="true"></textarea>
                         </div>
                         <input type="hidden" name="_subject" value="New Portfolio Inquiry">
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary" aria-label="Send message">Send Message</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <footer aria-label="Site footer">
         <div class="container">
-            <p class="footer-text">© 2025 Your Portfolio. All rights reserved.</p>
+            <p class="footer-text">© 2025 Thinul Bopearachchi. All rights reserved.</p>
             <div class="social-links">
-                <a href="https://web.facebook.com/profile.php?id=61562702168027" target="_blank" class="social-link" aria-label="Facebook">
+                <a href="https://web.facebook.com/profile.php?id=61562702168027" target="_blank" class="social-link" aria-label="Visit Facebook profile">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://www.instagram.com/thinul_chathsidu_/" target="_blank" class="social-link" aria-label="Instagram">
+                <a href="https://www.instagram.com/thinul_chathsidu_/" target="_blank" class="social-link" aria-label="Visit Instagram profile">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/thinul-chathsidu/" target="_blank" class="social-link" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/thinul-chathsidu/" target="_blank" class="social-link" aria-label="Visit LinkedIn profile">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://github.com/thinulbrox" target="_blank" class="social-link" aria-label="GitHub">
+                <a href="https://github.com/thinulbrox" target="_blank" class="social-link" aria-label="Visit GitHub profile">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
@@ -922,146 +961,193 @@
     </footer>
 
     <script>
-        // Navigation functionality
-        const nav = document.getElementById('mainNav');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        // Scroll event for fixed navigation
-        // Add this script if you want the transparent effect when scrolling
-        window.addEventListener('scroll', function() {
-        const navigation = document.querySelector('.navigation');
-        if (window.scrollY > 50) {
-            navigation.classList.remove('transparent');
-        } else {
-            navigation.classList.add('transparent');
-        }
-        });
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-        const navigation = document.querySelector('.navigation');
-        if (window.scrollY <= 50) {
-            navigation.classList.add('transparent');
-        }
-        });
-       
-        
-            // Mobile menu toggle
-        mobileMenuBtn.addEventListener('click', function () {
-            navLinks.classList.toggle('active');
-            
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Close menu when clicking outside on mobile
-        document.addEventListener('click', function(e) {
-            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-            }
-        });
-
-        // Close menu when resizing to desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-            }
-        });
-        
-        
-        // Smooth scroll for all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                // Close mobile menu if open
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-                }
-                
-                // Smooth scroll to the target
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+        // Theme Management
         const lightModeBtn = document.getElementById('lightModeBtn');
         const darkModeBtn = document.getElementById('darkModeBtn');
 
-        lightModeBtn.addEventListener('click', () => {
-            document.body.classList.add('light-mode');
+        function setTheme(isLight) {
+            document.body.classList.toggle('light-mode', isLight);
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        }
+
+        // Initialize theme from localStorage or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
+            setTheme(true);
+        }
+
+        lightModeBtn.addEventListener('click', () => setTheme(true));
+        darkModeBtn.addEventListener('click', () => setTheme(false));
+
+        // Navigation
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const navigation = document.querySelector('.navigation');
+
+        function toggleMobileMenu() {
+            const isOpen = navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars', !isOpen);
+            icon.classList.toggle('fa-times', isOpen);
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Close menu on outside click
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
+                toggleMobileMenu();
+            }
         });
 
-        darkModeBtn.addEventListener('click', () => {
-            document.body.classList.remove('light-mode');
+        // Close menu on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                toggleMobileMenu();
+            }
         });
-            if (!validateEmail(formData.get('_replyto'))) {
-    alert('Please enter a valid email');
-    return;
-}
 
+        // Navigation transparency
+        function updateNavTransparency() {
+            navigation.classList.toggle('transparent', window.scrollY <= 50);
+        }
 
-                  // Replace the form submission handler with:
-            document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        window.addEventListener('scroll', updateNavTransparency);
+        updateNavTransparency();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
                 e.preventDefault();
-                
-                const formData = new FormData(this);
-                const submitBtn = this.querySelector('button[type="submit"]');
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = 'Sending...';
-            
-                try {
-                    const response = await fetch(this.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-            
-                   const formMessage = document.getElementById('formMessage');
-                    
-                    if (response.ok) {
-                        formMessage.textContent = 'Message sent successfully!';
-                        formMessage.classList.add('success');
-                        formMessage.style.display = 'block';
-                    } else {
-                        formMessage.textContent = 'Error sending message. Please try again.';
-                        formMessage.classList.add('error');
-                        formMessage.style.display = 'block';
+                const targetId = anchor.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if (navLinks.classList.contains('active')) {
+                        toggleMobileMenu();
                     }
-                function validateEmail(email) {
-                    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    return regex.test(email);
                 }
+            });
+        });
 
-        // Create some animated background effects
-        document.addEventListener('DOMContentLoaded', function() {
-            const header = document.querySelector('header');
-            
-            // Create some additional blobs for animation
-            for (let i = 0; i < 3; i++) {
+        // Form handling
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            formMessage.style.display = 'none';
+
+            if (!validateEmail(formData.get('_replyto'))) {
+                formMessage.textContent = 'Please enter a valid email address';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+                formMessage.style.display = 'block';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                formMessage.style.display = 'block';
+                if (response.ok) {
+                    formMessage.textContent = 'Message sent successfully!';
+                    formMessage.classList.remove('error');
+                    formMessage.classList.add('success');
+                    contactForm.reset();
+                } else {
+                    formMessage.textContent = 'Error sending message. Please try again.';
+                    formMessage.classList.remove('success');
+                    formMessage.classList.add('error');
+                }
+            } catch (error) {
+                formMessage.style.display = 'block';
+                formMessage.textContent = 'Network error. Please try again later.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+                console.error('Form submission error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+        });
+
+        // Lazy-load blobs and falling shapes
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hero section blobs
+            const header = document.querySelector('header.hero');
+            const blobColors = ['#ff6b6b', '#a855f7', '#ff9e7d'];
+            for (let i = 0; i < 2; i++) {
                 const blob = document.createElement('div');
                 blob.classList.add('blob');
-                blob.style.width = Math.random() * 200 + 100 + 'px';
+                blob.style.width = `${Math.random() * 150 + 100}px`;
                 blob.style.height = blob.style.width;
-                blob.style.background = `rgba(${Math.floor(Math.random() * 100) + 99}, ${Math.floor(Math.random() * 100) + 102}, ${Math.floor(Math.random() * 100) + 141}, 0.2)`;
-                blob.style.left = Math.random() * 100 + '%';
-                blob.style.top = Math.random() * 100 + '%';
-                blob.style.animationDuration = Math.random() * 10 + 20 + 's';
+                blob.style.background = blobColors[Math.floor(Math.random() * blobColors.length)];
+                blob.style.left = `${Math.random() * 100}%`;
+                blob.style.top = `${Math.random() * 100}%`;
+                blob.style.animationDuration = `${Math.random() * 10 + 15}s`;
                 header.appendChild(blob);
             }
+
+            // Falling shapes effect starting from services section
+            const fallingShapes = document.getElementById('fallingShapes');
+            const servicesSection = document.getElementById('services');
+            const colors = ['#ff6b6b', '#a855f7', '#ff9e7d', '#fb5607'];
+            const maxShapes = 6; // Reduced number of shapes
+
+            // Dynamically set the top position of falling-shapes to the services section
+            const servicesRect = servicesSection.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const servicesTop = servicesRect.top + scrollTop;
+            fallingShapes.style.top = `${servicesTop}px`;
+
+            function createShape() {
+                const shape = document.createElement('div');
+                shape.classList.add('shape');
+                if (Math.random() > 0.5) {
+                    shape.classList.add('circle');
+                }
+                const size = Math.random() * 25 + 15; // Increased size range (15-40px)
+                shape.style.width = `${size}px`;
+                shape.style.height = `${size}px`;
+                shape.style.background = colors[Math.floor(Math.random() * colors.length)];
+                shape.style.left = `${Math.random() * 100}vw`;
+                shape.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                shape.style.animationDelay = `${Math.random() * 2}s`;
+                fallingShapes.appendChild(shape);
+
+                // Remove shape after animation
+                shape.addEventListener('animationend', () => {
+                    shape.remove();
+                });
+            }
+
+            // Create initial shapes
+            for (let i = 0; i < maxShapes; i++) {
+                setTimeout(createShape, i * 600); // Increased delay for fewer shapes
+            }
+
+            // Continuously create new shapes
+            setInterval(createShape, 1500); // Increased interval for fewer shapes
+        });
+
+        // Performance optimization
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
         });
     </script>
 </body>
