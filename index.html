@@ -12,28 +12,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.io/apple-touch-icon.png">
     <link rel="manifest" href="/favicon.io/site.webmanifest">
     <title>Thinul Bopearachchi - Official Website</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&family=Comic+Sans+MS&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: var(--main-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overscroll-behavior: none;
-            position: relative;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
         :root {
@@ -50,60 +36,35 @@
         }
 
         .light-mode {
-            --main-bg: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --text-primary: #1a1a2e;
-            --text-secondary: #4b5563;
+            --main-bg: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --glass-effect: rgba(0, 0, 0, 0.05);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --accent: #dc2626;
+            --primary-gradient: linear-gradient(135deg, #f87171, #c084fc);
+            --secondary-gradient: linear-gradient(135deg, #fdba74, #f97316);
         }
 
-        /* Falling Shapes Effect */
-        .falling-shapes {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: calc(100vh - 70px);
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            opacity: 0.3;
-            animation: fall linear infinite;
-            border-radius: 20%;
-            transform: rotate(45deg);
-        }
-
-        .shape.circle {
-            border-radius: 50%;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateY(calc(100vh)) rotate(360deg);
-                opacity: 0;
-            }
+        body {
+            background-color: var(--main-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overscroll-behavior: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
-            position: relative;
-            z-index: 1;
         }
 
         header.hero {
             padding: 2rem 0;
             position: relative;
             overflow: hidden;
-            z-index: 2;
-            flex: 1 0 auto;
         }
 
         .header-content {
@@ -111,7 +72,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: calc(100vh - 63px);
+            min-height: calc(100vh - 60px);
             position: relative;
             z-index: 2;
             text-align: center;
@@ -123,25 +84,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                135deg,
-                #ff6b6b, #a855f7, #ff9e7d, #fb5607,
-                #4facfe, #00f2fe, #43e97b, #38f9d7,
-                #fa709a, #fee140, #fbc2eb, #a6c1ee,
-                #fddb92, #d4fc79, #96e6a1, #fbc7d4,
-                #cfd9df, #e2ebf0, #f6d365, #fda085,
-                #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb,
-                #84fab0, #8fd3f4, #ff5858, #ff9966,
-                #ccff99, #99ccff, #ff99cc, #66cccc,
-                #ffcc99, #9999ff, #cc99ff, #ff6666,
-                #66ffcc, #ffcc66, #9966ff, #ff6699,
-                #66ff99, #cc66ff, #ff9966, #6699ff,
-                #ff66cc, #99ff66
-            );
-            background-size: 800% 800%;
+            background: linear-gradient(135deg, #ff6b6b, #a855f7, #ff9e7d, #f97316, #6366f1, #34d399, #facc15, #3b82f6, #ec4899, #10b981);
+            background-size: 400% 400%;
             opacity: 0.1;
             z-index: 1;
-            animation: gradient-shift 40s ease infinite;
+            animation: gradient-shift 30s ease infinite;
         }
 
         @keyframes gradient-shift {
@@ -188,7 +135,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
             backdrop-filter: blur(10px);
         }
 
@@ -214,7 +161,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-family: 'Comic Sans MS', cursive;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             text-decoration: none;
         }
 
@@ -260,40 +207,44 @@
             display: flex;
             align-items: center;
             background: var(--glass-effect);
-            border-radius: 20px;
-            padding: 0.3rem 0.5rem;
+            border-radius: 12px;
+            padding: 0.3rem;
             border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 0.5rem;
+            border-radius: 20px;
         }
 
         .btn-icon {
             border: none;
             background: transparent;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            width: 32px;
-            height: 32px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: transform 0.3s, background 0.3s;
-            color: var(--text-primary);
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        body:not(.light-mode) .btn-icon {
+        .btn-icon i {
+            position: relative;
+            z-index: 1;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        body:not(.light-mode) .btn-icon i {
             color: #ffffff;
         }
 
         .btn-icon:hover,
         .btn-icon:focus {
-            transform: scale(1.1);
-            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.15);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background: var(--glass-effect);
         }
 
         .mobile-menu-btn {
@@ -334,7 +285,7 @@
 
         .btn {
             padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
+            border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -342,6 +293,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
@@ -350,10 +303,30 @@
             border: none;
         }
 
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .btn-primary:hover::before,
+        .btn-primary:focus::before {
+            width: 300px;
+            height: 300px;
+        }
+
         .btn-primary:hover,
         .btn-primary:focus {
             opacity: 0.9;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .btn-secondary {
@@ -362,18 +335,35 @@
             color: #6366f1;
         }
 
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .btn-secondary:hover::before,
+        .btn-secondary:focus::before {
+            width: 300px;
+            height: 300px;
+        }
+
         .btn-secondary:hover,
         .btn-secondary:focus {
             background: rgba(99, 102, 241, 0.1);
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         section {
             padding: 4rem 0;
             scroll-margin-top: 80px;
-            position: relative;
-            z-index: 1;
-            flex: 1 0 auto;
         }
 
         .section-title {
@@ -534,7 +524,7 @@
 
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
@@ -542,43 +532,44 @@
         .contact-form {
             background: var(--card-bg);
             border-radius: 1rem;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
         .contact-details {
-            width: 100%;
-            max-width: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 0.5rem;
+            margin-bottom: 0;
+            width: 100%;
         }
 
         .contact-icon {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             background: var(--primary-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 1.5rem;
+            margin-right: 1rem;
             flex-shrink: 0;
         }
 
         .contact-icon i {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
         }
 
         .contact-text {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             flex-grow: 1;
         }
 
@@ -612,12 +603,13 @@
             background: var(--glass-effect);
             color: var(--text-primary);
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .form-input:focus {
             outline: none;
             border-color: #6366f1;
+            box-shadow: 0 0 8px rgba(99, 102, 241, 0.2);
         }
 
         .form-message {
@@ -645,10 +637,7 @@
             padding: 2rem 0;
             text-align: center;
             border-top: 1px solid var(--glass-border);
-            margin-top: 0;
-            position: relative;
-            z-index: 1;
-            flex-shrink: 0;
+            margin-top: 4rem;
         }
 
         .footer-text {
@@ -679,7 +668,7 @@
         .social-link:hover,
         .social-link:focus {
             transform: translateY(-3px);
-            opacity: 0.9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         @media (max-width: 768px) {
@@ -736,29 +725,6 @@
             .pricing {
                 padding: 1.5rem;
             }
-
-            .falling-shapes {
-                height: calc(100vh - 70px);
-            }
-
-            .contact-details,
-            .contact-form {
-                padding: 1.5rem;
-            }
-
-            .contact-icon {
-                width: 40px;
-                height: 40px;
-                margin-right: 1rem;
-            }
-
-            .contact-icon i {
-                font-size: 1.2rem;
-            }
-
-            .contact-text {
-                font-size: 0.95rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -778,22 +744,10 @@
                 padding: 0.6rem 1.2rem;
                 font-size: 0.9rem;
             }
-
-            .nav-buttons-container {
-                padding: 0.4rem 0.4rem;
-                border-radius: 20px;
-            }
-
-            .btn-icon {
-                width: 28px;
-                height: 28px;
-                font-size: 1rem;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="falling-shapes" id="fallingShapes"></div>
     <header class="navigation transparent">
         <nav class="nav" id="mainNav">
             <a href="/" class="logo" aria-label="Thinul Bopearachchi Home">THINUL BOPEARACHCHI</a>
@@ -807,10 +761,7 @@
                 <li><a href="#contact" aria-label="Contact section">Contact</a></li>
                 <li class="nav-buttons-container">
                     <div class="nav-buttons">
-                        <button id="lightModeBtn" class="btn-icon" aria-label="Switch to light mode">
-                            <i class="fas fa-sun"></i>
-                        </button>
-                        <button id="darkModeBtn" class="btn-icon" aria-label="Switch to dark mode">
+                        <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle theme">
                             <i class="fas fa-moon"></i>
                         </button>
                     </div>
@@ -887,10 +838,12 @@
     </section>
 
     <section id="pricing" aria-labelledby="pricing-title">
-        <div class="pricing">
-            <h3 class="section-title" id="pricing-title">Affordable Pricing</h3>
-            <p>All services start at <span class="pricing-highlight">Rs. 500 / $2.5</span></p>
-            <p>Custom packages available for long-term projects and regular tutoring sessions.</p>
+        <div class="container">
+            <div class="pricing">
+                <h3 class="section-title" id="pricing-title">Affordable Pricing</h3>
+                <p>All services start at <span class="pricing-highlight">Rs. 500 / $2.5</span></p>
+                <p>Custom packages available for long-term projects and regular tutoring sessions.</p>
+            </div>
         </div>
     </section>
 
@@ -1001,12 +954,15 @@
 
     <script>
         // Theme Management
-        const lightModeBtn = document.getElementById('lightModeBtn');
-        const darkModeBtn = document.getElementById('darkModeBtn');
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = themeToggleBtn.querySelector('i');
 
         function setTheme(isLight) {
             document.body.classList.toggle('light-mode', isLight);
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            themeIcon.classList.toggle('fa-moon', !isLight);
+            themeIcon.classList.toggle('fa-sun', isLight);
+            themeToggleBtn.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
         }
 
         // Initialize theme from localStorage or system preference
@@ -1014,14 +970,18 @@
         const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
         if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
             setTheme(true);
+        } else {
+            setTheme(false);
         }
 
-        lightModeBtn.addEventListener('click', () => setTheme(true));
-        darkModeBtn.addEventListener('click', () => setTheme(false));
+        themeToggleBtn.addEventListener('click', () => {
+            setTheme(!document.body.classList.contains('light-mode'));
+        });
 
         // Navigation
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
+        const nav = document.getElementById('mainNav');
         const navigation = document.querySelector('.navigation');
 
         function toggleMobileMenu() {
@@ -1125,9 +1085,8 @@
             }
         });
 
-        // Lazy-load blobs and falling shapes
+        // Lazy-load blobs
         document.addEventListener('DOMContentLoaded', () => {
-            // Hero section blobs
             const header = document.querySelector('header.hero');
             const blobColors = ['#ff6b6b', '#a855f7', '#ff9e7d'];
             for (let i = 0; i < 2; i++) {
@@ -1141,47 +1100,6 @@
                 blob.style.animationDuration = `${Math.random() * 10 + 15}s`;
                 header.appendChild(blob);
             }
-
-            // Falling shapes effect starting from services section
-            const fallingShapes = document.getElementById('fallingShapes');
-            const servicesSection = document.getElementById('services');
-            const colors = ['#ff6b6b', '#a855f7', '#ff9e7d', '#fb5607'];
-            const maxShapes = 6;
-
-            // Dynamically set the top position of falling-shapes to the services section
-            const servicesRect = servicesSection.getBoundingClientRect();
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const servicesTop = servicesRect.top + scrollTop;
-            fallingShapes.style.top = `${servicesTop}px`;
-
-            function createShape() {
-                const shape = document.createElement('div');
-                shape.classList.add('shape');
-                if (Math.random() > 0.5) {
-                    shape.classList.add('circle');
-                }
-                const size = Math.random() * 25 + 15;
-                shape.style.width = `${size}px`;
-                shape.style.height = `${size}px`;
-                shape.style.background = colors[Math.floor(Math.random() * colors.length)];
-                shape.style.left = `${Math.random() * 100}vw`;
-                shape.style.animationDuration = `${Math.random() * 5 + 3}s`;
-                shape.style.animationDelay = `${Math.random() * 2}s`;
-                fallingShapes.appendChild(shape);
-
-                // Remove shape after animation
-                shape.addEventListener('animationend', () => {
-                    shape.remove();
-                });
-            }
-
-            // Create initial shapes
-            for (let i = 0; i < maxShapes; i++) {
-                setTimeout(createShape, i * 600);
-            }
-
-            // Continuously create new shapes
-            setInterval(createShape, 1500);
         });
 
         // Performance optimization
